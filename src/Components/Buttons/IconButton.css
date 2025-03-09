@@ -1,0 +1,24 @@
+.icon-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.icon-button:hover {
+  border-color: #646cff;
+}
+
+.icon-button .icon {
+  display: flex;
+  align-items: center;
+}
