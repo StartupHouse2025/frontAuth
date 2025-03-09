@@ -1,37 +1,27 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import IconButton from './Components/Buttons/IconButton' // Add this line
+import React from 'react';
+import { BrowserRouter, useLocation } from 'react-router-dom';
+import AppRoutes from './Routes/GeneralRoutes/routes';
+import './app.css';
+import Sidebar from './Components/sidebar/sidebar';
 
-function App() {
-  const [count, setCount] = useState(0)
+function AppContent() {
+  const location = useLocation();
+  const hideSidebar = location.pathname === '/' || location.pathname === '/login' || location.pathname === '/register';
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>GUENASSSSS</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-        <IconButton text="Click Me" icon="👍" /> {/* Add this line */}
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="app-container">
+      {!hideSidebar && <Sidebar />}
+      <AppRoutes />
+    </div>
+  );
 }
 
-export default App
+function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
+  );
+}
+
+export default App;
